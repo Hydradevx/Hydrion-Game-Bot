@@ -1,0 +1,39 @@
+{
+  "name": "hydrion-game-bot",
+  "version": "0.0.1",
+  "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
+  "main": "dist/bot.js",
+  "scripts": {
+    "test": "node dist/bot.js",
+    "start": "node dist/bot.js",
+    "format": "prettier --write .",
+    "build": "tsc",
+    "dev": "tsc && npm run format && node build/bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hydradevx/Hydrion-Game-Bot.git"
+  },
+  "keywords": [
+    "Discord-bot",
+    "Game-bot",
+    "Hydrion",
+    "HydraDevX"
+  ],
+  "author": "HydraDevX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hydradevx/Hydrion-Game-Bot/issues"
+  },
+  "homepage": "https://github.com/Hydradevx/Hydrion-Game-Bot#readme",
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "prettier": "^3.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
