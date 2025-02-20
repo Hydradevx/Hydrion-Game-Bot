@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
   "main": "dist/bot.js",
+  "type": "module",
   "scripts": {
     "test": "node build/bot.js",
     "start": "node build/bot.js",
@@ -30,7 +31,8 @@
   "dependencies": {
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",

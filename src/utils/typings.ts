@@ -1,8 +1,7 @@
-import {Client} from "discord.js"
+import { Client, Collection } from 'discord.js'
 
 interface CLIENT extends Client {
+  commands: Collection<string, any>
 }
 
-export {
-  CLIENT
-}
+export { CLIENT }
