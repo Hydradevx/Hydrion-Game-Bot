@@ -4,11 +4,12 @@
   "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
   "main": "dist/bot.js",
   "scripts": {
-    "test": "node dist/bot.js",
-    "start": "node dist/bot.js",
+    "test": "node build/bot.js",
+    "start": "node build/bot.js",
     "format": "prettier --write .",
     "build": "tsc",
-    "dev": "tsc && npm run format && node build/bot.js"
+    "dev": "tsc && npm run format && node build/bot.js",
+    "commands": "node build/deploy-commands.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
   "homepage": "https://github.com/Hydradevx/Hydrion-Game-Bot#readme",
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
