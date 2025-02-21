@@ -3,21 +3,29 @@ dotenv.config()
 
 import { REST, Routes } from 'discord.js'
 import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const token = process.env.TOKEN as string
 if (!token) {
   throw new Error('TOKEN is not defined in the environment variables.')
 }
 
-const commands: any = []
+let commands = []
+
+const commandsPath = path.join(__dirname, 'commands')
 const commandFiles = fs
-  .readdirSync('./commands')
+  .readdirSync(commandsPath)
   .filter((file) => file.endsWith('.js'))
-  .filter((file) => fs.existsSync(`./commands/${file}`))
 
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`)
-  commands.push(command.data.toJSON())
+  const filePath = path.join(commandsPath, file)
+  const command = await import(filePath)
+  commands.push(command.data)
 }
 
 const rest = new REST({ version: '10' }).setToken(token)
