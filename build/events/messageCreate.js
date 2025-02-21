@@ -11,7 +11,7 @@ client.on('messageCreate', async (message) => {
   const command = client.prefixCommands.get(commandName)
   if (!command) return
   try {
-    await command.execute(message, args)
+    await command.execute(message)
   } catch (error) {
     console.error(error)
     message.reply('There was an error while executing this command!')

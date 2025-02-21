@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
   "main": "dist/bot.js",
-  "type": "module",
   "scripts": {
     "test": "node build/bot.js",
     "start": "node build/bot.js",
     "format": "prettier --write .",
     "build": "tsc",
-    "dev": "tsc && npm run format && node build/bot.js",
+    "dev": "rm -rf build && tsc && npm run format && node build/bot.js",
     "commands": "node build/deploy-commands.js"
   },
   "repository": {

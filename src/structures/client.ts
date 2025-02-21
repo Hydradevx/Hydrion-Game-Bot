@@ -3,7 +3,7 @@ import { CLIENT } from '../utils/typings'
 import fs from 'fs'
 import path from 'path'
 
-export const client: any = new Client({
+const client: any = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -18,8 +18,6 @@ const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith('.js'))
 
-const commands = []
-
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
   const command = require(filePath)
@@ -33,3 +31,5 @@ for (const file of commandFiles) {
     }
   }
 }
+
+export { client }

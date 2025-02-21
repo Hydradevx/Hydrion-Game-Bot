@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, Collection } from 'discord.js'
 import fs from 'fs'
 import path from 'path'
-export const client = new Client({
+const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -13,7 +13,6 @@ const commandsPath = path.join(__dirname, '../commands')
 const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith('.js'))
-const commands = []
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
   const command = require(filePath)
@@ -26,3 +25,4 @@ for (const file of commandFiles) {
     }
   }
 }
+export { client }

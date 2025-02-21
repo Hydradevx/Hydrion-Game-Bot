@@ -1,7 +1,18 @@
-import { Client, Collection } from 'discord.js'
+import { Client, Collection, CommandInteraction, Message } from 'discord.js'
 
 interface CLIENT extends Client {
-  commands: Collection<string, any>
+  commands: Collection<
+    string,
+    {
+      data: any
+      execute: (exec: Cmd) => Promise<void>
+    }
+  >
 }
 
-export { CLIENT }
+interface Cmd {
+  interaction: CommandInteraction
+  message: Message
+}
+
+export { CLIENT, Cmd }
