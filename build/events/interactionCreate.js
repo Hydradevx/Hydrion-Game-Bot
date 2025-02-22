@@ -3,14 +3,14 @@ export async function interactionCreate(client, interaction) {
   if (!interaction.isChatInputCommand()) return
   let data
   try {
-    data = await model.findOne({ userID: interaction.user.id })
+    data = await model.findOne({ userId: interaction.user.id })
     if (!data) {
-      data = await model.create({
-        userId: interaction.user.id,
-      })
+      data = model.create({ userId: interaction.user.id })
+      await data.save()
     }
   } catch (error) {
     console.error(error)
+    return
   }
   const command = client.commands.get(interaction.commandName)
   if (!command) return

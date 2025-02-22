@@ -27,11 +27,15 @@ if (!process.env.CLIENT_ID) {
 }
 ;(async () => {
   try {
-    console.log('Started refreshing application (/) commands.')
+    console.log(
+      `Started refreshing ${commands.length} application (/) commands.`,
+    )
     await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), {
       body: commands,
     })
-    console.log('Successfully reloaded application (/) commands.')
+    console.log(
+      `Successfully reloaded ${commands.length} application (/) commands.`,
+    )
   } catch (error) {
     console.error(error)
   }

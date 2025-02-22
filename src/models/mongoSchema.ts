@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const mongoSchema = new mongoose.Schema({
   userId: { type: String, required: true, unique: true },
@@ -9,7 +9,11 @@ const mongoSchema = new mongoose.Schema({
   lastDaily: { type: Date, default: null },
   huntStats: {
     totalHunts: { type: Number, default: 0 },
-    animalsCaught: { type: Map, of: Number, default: {} },
+    animalsCaught: { type: Object, default: {} },
+  },
+  gems: {
+    owned: { type: Object, default: {} },
+    equipped: { type: String, default: null },
   },
   inventory: {
     gems: { type: Map, of: Number, default: {} },
@@ -22,7 +26,7 @@ const mongoSchema = new mongoose.Schema({
   lastHunt: { type: Date, default: null },
   lastCommandUse: { type: Map, of: Date, default: {} },
   createdAt: { type: Date, default: Date.now },
-});
+})
 
-const model = mongoose.model("DataBase", mongoSchema);
-export default model;
+const model = mongoose.model('DataBase', mongoSchema)
+export default model
