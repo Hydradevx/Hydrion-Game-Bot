@@ -6,7 +6,7 @@ export const data = {
 export async function execute(interaction, data) {
   const { balance, bank } = data
   const embed = new EmbedBuilder()
-    .setTitle(`<@&${interaction.user.id}>'s Balance`)
+    .setTitle(`${interaction.user.username}'s Balance`)
     .setDescription(`💰 Wallet: ${balance}\n🏦 Bank: ${bank}`)
     .setColor('#6f00e6')
   try {

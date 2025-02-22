@@ -15,6 +15,12 @@ const mongoSchema = new mongoose.Schema({
     owned: { type: Object, default: {} },
     equipped: { type: String, default: null },
   },
+  lootboxes: {
+    common: { type: Number, default: 0 },
+    rare: { type: Number, default: 0 },
+    epic: { type: Number, default: 0 },
+    legendary: { type: Number, default: 0 },
+  },
   inventory: {
     gems: { type: Map, of: Number, default: {} },
     weapons: { type: [String], default: [] },
