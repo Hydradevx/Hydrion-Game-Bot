@@ -1,6 +1,6 @@
 {
   "name": "hydrion-game-bot",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
   "main": "dist/bot.js",
   "type": "module",
