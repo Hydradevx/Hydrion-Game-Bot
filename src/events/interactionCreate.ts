@@ -4,9 +4,14 @@ import model from '../models/mongoSchema.js'
 export async function interactionCreate(client: any, interaction: Interaction) {
   if (!interaction.isChatInputCommand()) return
 
-  let Data
+  let data
   try {
-    Data = await model.findOne({ userID: interaction.user.id })
+    data = await model.findOne({ userID: interaction.user.id })
+    if (!data) {
+      data = await model.create({
+        userId: interaction.user.id,
+      })
+    }
   } catch (error) {
     console.error(error)
   }
@@ -15,7 +20,7 @@ export async function interactionCreate(client: any, interaction: Interaction) {
   if (!command) return
 
   try {
-    await command.execute(interaction as ChatInputCommandInteraction)
+    await command.execute(interaction as ChatInputCommandInteraction, data)
   } catch (error) {
     console.error(error)
     await interaction.reply({
