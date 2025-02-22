@@ -43,22 +43,27 @@ for (const file of commandFiles) {
     )
 }
 
+import { expressStart } from './events/express.js'
 import { connectDB } from './utils/db.js'
 import { onReady } from './events/ready.js'
 import { interactionCreate } from './events/interactionCreate.js'
 import { setActivity } from './utils/rpc.js'
 
-onReady(client)
-connectDB()
-client.on('interactionCreate', async (interaction: Interaction) => {
-  await interactionCreate(client, interaction)
-})
-// setActivity()
-
 const token = process.env.TOKEN
 
-client.login(token)
+function start() {
+  client.login(token)
 
-// goofy ass render shit
-import { expressStart } from './events/express.js'
-expressStart()
+  onReady(client)
+  connectDB()
+  client.on('interactionCreate', async (interaction: Interaction) => {
+    await interactionCreate(client, interaction)
+  })
+  // setActivity()
+
+  // goofy ass render shit
+
+  expressStart()
+}
+
+start()

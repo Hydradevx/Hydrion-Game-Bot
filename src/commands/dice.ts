@@ -31,17 +31,19 @@ export async function execute(interaction: CommandInteraction, data) {
   const guess = interaction.options.get('guess')?.value as number
 
   if (betAmount <= 0) {
-    return interaction.reply({
-      content: 'You must bet a positive amount!',
-      ephemeral: true,
-    })
+    const embed = new EmbedBuilder()
+      .setTitle('❌ Invalid Bet Amount')
+      .setDescription('You must bet a positive amount!')
+      .setColor('#ff0000')
+    return interaction.reply({ embeds: [embed], ephemeral: true })
   }
 
   if (data.balance < betAmount) {
-    return interaction.reply({
-      content: "You don't have enough coins!",
-      ephemeral: true,
-    })
+    const embed = new EmbedBuilder()
+      .setTitle('❌ Insufficient Coins')
+      .setDescription("You don't have enough coins to bet that amount!")
+      .setColor('#ff0000')
+    return interaction.reply({ embeds: [embed], ephemeral: true })
   }
 
   await interaction.deferReply()

@@ -36,17 +36,20 @@ for (const file of commandFiles) {
       console.error(`Failed to load command at ${filePath}: ${error}`),
     )
 }
+import { expressStart } from './events/express.js'
 import { connectDB } from './utils/db.js'
 import { onReady } from './events/ready.js'
 import { interactionCreate } from './events/interactionCreate.js'
-onReady(client)
-connectDB()
-client.on('interactionCreate', async (interaction) => {
-  await interactionCreate(client, interaction)
-})
-// setActivity()
 const token = process.env.TOKEN
-client.login(token)
-// goofy ass render shit
-import { expressStart } from './events/express.js'
-expressStart()
+function start() {
+  client.login(token)
+  onReady(client)
+  connectDB()
+  client.on('interactionCreate', async (interaction) => {
+    await interactionCreate(client, interaction)
+  })
+  // setActivity()
+  // goofy ass render shit
+  expressStart()
+}
+start()
