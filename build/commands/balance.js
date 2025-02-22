@@ -4,10 +4,10 @@ export const data = {
   description: 'See your balance',
 }
 export async function execute(interaction, data) {
-  const { balance, bank } = data
+  const { balance } = data
   const embed = new EmbedBuilder()
     .setTitle(`${interaction.user.username}'s Balance`)
-    .setDescription(`💰 Wallet: ${balance}\n🏦 Bank: ${bank}`)
+    .setDescription(`💰 Wallet: ${balance}`)
     .setColor('#6f00e6')
   try {
     await interaction.reply({ embeds: [embed] })
