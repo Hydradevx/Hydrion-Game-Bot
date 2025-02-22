@@ -43,67 +43,22 @@ for (const file of commandFiles) {
     )
 }
 
-client.on('ready', () => {
-  console.log(`🚀 Logged in as ${client.user?.tag}! 🚀`)
-})
+import { connectDB } from './utils/db.js'
+import { onReady } from './events/ready.js'
+import { interactionCreate } from './events/interactionCreate.js'
+import { setActivity } from './utils/rpc.js'
 
+onReady(client)
+connectDB()
 client.on('interactionCreate', async (interaction: Interaction) => {
-  if (!interaction.isCommand()) return
-
-  const command = client.commands.get(interaction.commandName)
-  if (!command) return
-
-  try {
-    await command.execute(interaction)
-  } catch (error) {
-    console.error(error)
-    await interaction.reply({
-      content: 'There was an error while executing this command!',
-      ephemeral: true,
-    })
-  }
+  await interactionCreate(client, interaction)
 })
+// setActivity()
 
 const token = process.env.TOKEN
 
 client.login(token)
 
 // goofy ass render shit
-import express from 'express'
-const app = express()
-const port = 3000
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
-// RPC
-import RPC from 'discord-rpc'
-
-const clientId = process.env.CLIENT_ID
-const rpc = new RPC.Client({ transport: 'ipc' })
-
-async function setActivity() {
-  if (!rpc) return
-
-  rpc.setActivity({
-    details: 'Playing with Hydrion Tools',
-    state: 'Developing a Game Bot',
-    startTimestamp: Date.now(),
-    largeImageKey: 'logo',
-    largeImageText: 'Hydrion Tools',
-    smallImageKey: 'code',
-    smallImageText: 'Coding in TypeScript',
-    buttons: [
-      { label: 'Join Discord', url: 'https://discord.gg/6Tufbvnebj' },
-      { label: 'GitHub', url: 'https://github.com/Hydradevx' },
-    ],
-  })
-}
-
-rpc.on('ready', () => {
-  console.log('✅ Rich Presence is active!')
-  setActivity()
-
-  setInterval(setActivity, 15000)
-})
-
-rpc.login({ clientId }).catch(console.error)
+import { expressStart } from './events/express.js'
+expressStart()
