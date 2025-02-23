@@ -56,7 +56,6 @@ client.on('guildMemberAdd', async (member) => {
     })
   try {
     await member.user.send({ embeds: [embed] })
-    console.log(`✅ Sent DM to ${member.user.tag}`)
   } catch (err) {
     console.log(`❌ Could not DM ${member.user.tag}`)
   }
