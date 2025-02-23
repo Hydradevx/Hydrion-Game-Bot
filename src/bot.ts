@@ -47,6 +47,7 @@ import { connectDB } from './utils/db.js'
 import { onReady } from './events/ready.js'
 import { interactionCreate } from './events/interactionCreate.js'
 import { setActivity } from './utils/rpc.js'
+import antiCrash from './utils/AntiCrash.js'
 
 const token = process.env.TOKEN
 
@@ -59,6 +60,7 @@ function start() {
     await interactionCreate(client, interaction)
   })
   // setActivity()
+  antiCrash()
 }
 
 start()
