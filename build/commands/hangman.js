@@ -31,7 +31,7 @@ export async function execute(interaction) {
     msg.author.id === interaction.user.id && /^[a-zA-Z]$/.test(msg.content)
   const collector = interaction.channel?.createMessageCollector({
     filter,
-    time: 3000000,
+    time: 600000,
   })
   collector?.on('collect', async (msg) => {
     const letter = msg.content.toLowerCase()
