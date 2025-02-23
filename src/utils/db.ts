@@ -7,10 +7,13 @@ const MONGO_URI = process.env.MONGO_URI as string
 
 export async function connectDB() {
   try {
-    await mongoose.connect(MONGO_URI as string, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as mongoose.ConnectOptions)
+    await mongoose.connect(
+      MONGO_URI as string,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as mongoose.ConnectOptions,
+    )
 
     console.log('🔥 MongoDB Connected Successfully!')
   } catch (error) {

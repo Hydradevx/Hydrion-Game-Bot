@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const GITHUB_REPO = 'https://github.com/Hydradevx/Hydrion-Game-Bot.git' 
-const DESTINATION = path.join(__dirname, 'Hydrion-Game-Bot') 
+const GITHUB_REPO = 'https://github.com/Hydradevx/Hydrion-Game-Bot.git'
+const DESTINATION = path.join(__dirname, 'Hydrion-Game-Bot')
 
 async function updateRepo() {
   try {
@@ -28,7 +28,7 @@ async function updateRepo() {
 function runCommands(repoPath) {
   try {
     console.log(`📂 Switching to repo folder: ${repoPath}`)
-    process.chdir(repoPath) 
+    process.chdir(repoPath)
 
     console.log('📦 Running npm install...')
     execSync('npm install', { stdio: 'inherit' })

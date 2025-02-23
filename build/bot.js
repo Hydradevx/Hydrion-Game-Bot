@@ -36,7 +36,6 @@ for (const file of commandFiles) {
       console.error(`Failed to load command at ${filePath}: ${error}`),
     )
 }
-import { expressStart } from './events/express.js'
 import { connectDB } from './utils/db.js'
 import { onReady } from './events/ready.js'
 import { interactionCreate } from './events/interactionCreate.js'
@@ -49,7 +48,5 @@ function start() {
     await interactionCreate(client, interaction)
   })
   // setActivity()
-  // goofy ass render shit
-  expressStart()
 }
 start()
