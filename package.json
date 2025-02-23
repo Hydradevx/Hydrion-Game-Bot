@@ -1,6 +1,6 @@
 {
   "name": "hydrion-game-bot",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "The Best Open-Source Discord Game Bot Made with Love By HydraDevX",
   "main": "dist/bot.js",
   "type": "module",
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/Hydradevx/Hydrion-Game-Bot#readme",
   "dependencies": {
+    "axios": "^1.7.9",
     "discord-rpc": "^4.0.1",
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
