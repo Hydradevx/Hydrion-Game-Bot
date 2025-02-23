@@ -11,6 +11,14 @@ import fetch from 'node-fetch'
 export const data = {
   name: 'quiz',
   description: 'Answer a trivia question and win coins!',
+  options: [
+    {
+      name: 'amount',
+      type: 4,
+      description: 'Amount to bet',
+      required: true,
+    },
+  ],
 }
 
 async function getTriviaQuestion() {
@@ -35,6 +43,7 @@ async function getTriviaQuestion() {
 
 export async function execute(interaction: CommandInteraction, data) {
   const { question, options, correctAnswer } = await getTriviaQuestion()
+  const bet = interaction.options.get('amount')?.value as number
   const buttons = options.map((option) =>
     new ButtonBuilder()
       .setCustomId(option)
@@ -68,11 +77,11 @@ export async function execute(interaction: CommandInteraction, data) {
     }
 
     if (i.customId === correctAnswer) {
-      data.balance += 200
+      data.balance += bet
       data.wins += 1
       await data.save()
       embed
-        .setDescription(`✅ Correct! You won **200 coins!** 🎉`)
+        .setDescription(`✅ Correct! You won **${bet} coins!** 🎉`)
         .setColor('#00ff00')
     } else {
       data.losses += 1
@@ -82,6 +91,7 @@ export async function execute(interaction: CommandInteraction, data) {
           `❌ Wrong! The correct answer was **${correctAnswer}**.`,
         )
         .setColor('#ff0000')
+      data.balance -= bet
     }
 
     await i.update({ embeds: [embed], components: [] })
