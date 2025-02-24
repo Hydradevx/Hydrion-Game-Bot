@@ -65,7 +65,7 @@ export async function execute(interaction: CommandInteraction, data) {
 
   const collector = message.createMessageComponentCollector({
     componentType: ComponentType.Button,
-    time: 10000,
+    time: 120000,
   })
 
   collector.on('collect', async (i) => {

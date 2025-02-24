@@ -65,6 +65,7 @@ import { onReady } from './events/ready.js'
 import { interactionCreate } from './events/interactionCreate.js'
 import antiCrash from './utils/AntiCrash.js'
 const token = process.env.TOKEN
+import setupAutoDM from './utils/AutoDM.js'
 function start() {
   client.login(token)
   onReady(client)
@@ -74,5 +75,6 @@ function start() {
   })
   // setActivity()
   antiCrash()
+  setupAutoDM(client)
 }
 start()

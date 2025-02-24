@@ -54,7 +54,7 @@ export async function execute(interaction, data) {
   })
   const collector = message.createMessageComponentCollector({
     componentType: ComponentType.Button,
-    time: 10000,
+    time: 120000,
   })
   collector.on('collect', async (i) => {
     if (i.user.id !== interaction.user.id) {

@@ -84,6 +84,7 @@ import { interactionCreate } from './events/interactionCreate.js'
 import { setActivity } from './utils/rpc.js'
 import antiCrash from './utils/AntiCrash.js'
 const token = process.env.TOKEN
+import setupAutoDM from './utils/AutoDM.js'
 
 function start() {
   client.login(token)
@@ -95,6 +96,7 @@ function start() {
   })
   // setActivity()
   antiCrash()
+  setupAutoDM(client)
 }
 
 start()
