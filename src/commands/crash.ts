@@ -42,7 +42,7 @@ export async function execute(interaction: CommandInteraction, data) {
   await interaction.deferReply()
 
   let multiplier = 1.0
-  let crashPoint = (Math.random() * 8 + 1).toFixed(2) // Crash between 1.00x and 9.00x
+  let crashPoint = (Math.random() * 2.99 + 0.01).toFixed(2) // Crash between 0.01x and 3.00x
   let cashedOut = false
 
   const cashoutButton = new ButtonBuilder()
@@ -54,7 +54,7 @@ export async function execute(interaction: CommandInteraction, data) {
   let embed = new EmbedBuilder()
     .setTitle('🚀 Crash Game')
     .setDescription(
-      `Starting at **1.00x**...\n\n💰 **Click "Cash Out" before the crash!**`,
+      `Starting at **0.01x**...\n\n💰 **Click "Cash Out" before the crash!**`,
     )
     .setColor('#FFD700')
 
